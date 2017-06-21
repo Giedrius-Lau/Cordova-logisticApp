@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+    <!--
+        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
+        For details, see http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+        
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+
+        <title></title>
+    </head>
+    <body>
+        <body>
+
+
+            <div class="app">
+                <h3 id="vardas">Vardenis Pavardenis</h3>
+                <p id="krovinio_nr">Krovinio nr.: 23857238905</p>
+
+
+                <h2 id="pakrovimas">Pakrovimas</h2>
+                <button id="atvykau" onclick="atvykau()">Atvykau</button>
+                <button id="pradejau krautis" onclick="pradejauKrautis()">Pradėjau krautis</button>
+                <h2>Iškrovimas</h2>
+                <button id="atvykau">Atvykau</button>
+                <button id="pradejau__krautis">Pradėjau krautis</button>
+                <h3>Prisegti dokumentą</h3>
+                <button id="camera">Fotografuoti</button>
+                <img id="myImage" />
+                
+            </div>
+
+
+            <script type="text/javascript" src="cordova.js"></script>
+            <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+            <script type="text/javascript" src="scripts/index.js"></script>
+            <script type="text/javascript" src="scripts/firebase.js"></script>
+        </body>
+</html>
