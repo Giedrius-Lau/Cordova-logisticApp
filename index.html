@@ -17,7 +17,6 @@
 
         <title></title>
     </head>
-    <body>
         <body>
 
 
@@ -27,13 +26,17 @@
 
 
                 <h2 id="pakrovimas">Pakrovimas</h2>
-                <button id="atvykau" onclick="atvykau()">Atvykau</button>
-                <button id="pradejau krautis" onclick="pradejauKrautis()">Pradėjau krautis</button>
+                <button onclick="atvykau(this)">Atvykau</button>
+                <button id="1" class="hidden" onclick="pradejauKrautis(this)">Pradėjau krautis</button>
+                <button id="2" class="hidden" onclick="isvykstuIsPasikrovimo(this)">Išvykstu iš pasikrovimo vietos</button>
+
                 <h2>Iškrovimas</h2>
-                <button id="atvykau">Atvykau</button>
-                <button id="pradejau__krautis">Pradėjau krautis</button>
+                <button id="3" class="hidden" onclick="atvykau2(this)">Atvykau į išsikrovimą</button>
+                <button id="4" class="hidden" onclick="pradejauKrautis2(this)">Pradėjau krautis</button>
+                <button id="5" class="hidden" onclick="isvykstu(this)">Išvykstu iš išsikrovimo vietos</button>
+
                 <h3>Prisegti dokumentą</h3>
-                <button id="camera">Fotografuoti</button>
+                <button class="hidden" id="camera">Fotografuoti</button>
                 <img id="myImage" />
                 
             </div>
