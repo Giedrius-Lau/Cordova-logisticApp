@@ -11,11 +11,13 @@ firebase.initializeApp(config);
 
 var firebaseRef = firebase.database().ref();
 
-
+var d = new Date();
 
 function atvykau(clicked) {
     firebase.database().ref().set({
-        krovinioStatusas: 'Atvykau į pasikrovimo vietą'
+        id: 1,
+        krovinioStatusas: 'Atvykau į pasikrovimo vietą',
+        laikas: d
     });
     $(clicked).addClass('hidden');
     $("#1").removeClass('hidden');
@@ -24,7 +26,9 @@ function atvykau(clicked) {
 
 function pradejauKrautis(clicked) {
     firebase.database().ref().update({
-        krovinioStatusas2: 'Pradejau krautis'
+        id: 2,
+        krovinioStatusas: 'Pradejau krautis',
+        laikas2: d
     });
     $(clicked).addClass('hidden');
     $("#2").removeClass('hidden');
@@ -33,7 +37,9 @@ function pradejauKrautis(clicked) {
 
 function isvykstuIsPasikrovimo(clicked) {
     firebase.database().ref().update({
-        krovinioStatusas3: 'Išvykau iš pasikrovimo vietos'
+        id: 3,
+        krovinioStatusas: 'Išvykau iš pasikrovimo vietos',
+        laikas3: d
     });
     $(clicked).addClass('hidden');
     $("#3").removeClass('hidden');
@@ -41,8 +47,10 @@ function isvykstuIsPasikrovimo(clicked) {
 }
 
 function atvykau2(clicked) {
-    firebase.database().ref().update({
-        krovinioStatusas4: 'Atvykau į išsikrovimo vietą'
+    firebase.database().ref().set({
+        id: 4,
+        krovinioStatusas: 'Atvykau į išsikrovimo vietą',
+        laikas4: d
     });
     $(clicked).addClass('hidden');
     $("#4").removeClass('hidden');
@@ -51,8 +59,10 @@ function atvykau2(clicked) {
 
 
 function pradejauKrautis2(clicked) {
-    firebase.database().ref().update({
-        krovinioStatusas5: 'Pradejau išsikrovimą'
+    firebase.database().ref().set({
+        id: 5,
+        krovinioStatusas: 'Pradejau išsikrovimą',
+        laikas5: d
     });
     $(clicked).addClass('hidden');
     $("#5").removeClass('hidden');
@@ -60,8 +70,10 @@ function pradejauKrautis2(clicked) {
 }
 
 function isvykstu(clicked) {
-    firebase.database().ref().update({
-        krovinioStatusas6: 'Išvykau iš išsikrovimo vietos'
+    firebase.database().ref().set({
+        id: 6,
+        krovinioStatusas: 'Išvykau iš išsikrovimo vietos',
+        laikas6: d
     });
      $(clicked).addClass('hidden');
     $("#camera").removeClass('hidden');
@@ -69,14 +81,8 @@ function isvykstu(clicked) {
 
 
 
-firebase.database().ref().once('value').then((snapshot) => {
-    console.log('Got entire database', snapshot.val());
-}, (e) => {
-    console.log('Unable to fetch value', e);
-    });
-
-firebase.on('value', (snapshot) => {
-    console.log('Got value', snapshot.val());
+firebaseRef.on('value', (snapshot) => {
+    //document.getElementById('chatas') = "<li>" + snapshot.val() + "</li>";
+    $("#chatas").append("<li>" + snapshot.val() + "</li>");
+    console.log(snapshot.val());
 });
-
-firebaseRef.update({ krovinioStatusas3: 123123123 });
