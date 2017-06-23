@@ -10,14 +10,42 @@ var config = {
 firebase.initializeApp(config);
 
 var firebaseRef = firebase.database().ref();
+var notesRef = firebaseRef.child('statusas');
+//var newNoteRef = notesRef.push();
 
-var d = new Date();
+
+//Get elements
+const preObject = document.getElementById('object');
+const ulList = document.getElementById('list');
+
+
+//Create references
+
+const dbRefObject = firebase.database().ref().child('statusas');
+const dbRefList = dbRefObject.child('status');
+//const dbRefListTime = dbRefObject.child('time');
+
+//Sync object changes
+dbRefObject.on('value', snap => {
+    preObject.innerText = JSON.stringify(snap.val(), null, 3);
+});
+
+
+//Sync list changes
+dbRefList.on('child_added', snap => console.log(snap.val()));
+
+
+
+
+
+
+
+
 
 function atvykau(clicked) {
-    firebase.database().ref().set({
-        id: 1,
-        krovinioStatusas: 'Atvykau į pasikrovimo vietą',
-        laikas: d
+    notesRef.push({
+        status: 'Atvykau',
+        time: Date()
     });
     $(clicked).addClass('hidden');
     $("#1").removeClass('hidden');
@@ -25,10 +53,9 @@ function atvykau(clicked) {
 
 
 function pradejauKrautis(clicked) {
-    firebase.database().ref().update({
-        id: 2,
-        krovinioStatusas: 'Pradejau krautis',
-        laikas2: d
+    notesRef.push({
+        status: 'Pradėjau krautis',
+        time: Date()
     });
     $(clicked).addClass('hidden');
     $("#2").removeClass('hidden');
@@ -36,10 +63,10 @@ function pradejauKrautis(clicked) {
 }
 
 function isvykstuIsPasikrovimo(clicked) {
-    firebase.database().ref().update({
-        id: 3,
-        krovinioStatusas: 'Išvykau iš pasikrovimo vietos',
-        laikas3: d
+    
+    notesRef.push({
+        status: 'Išvykau iš pasikrovimo vietos',
+        time: Date()
     });
     $(clicked).addClass('hidden');
     $("#3").removeClass('hidden');
@@ -47,10 +74,10 @@ function isvykstuIsPasikrovimo(clicked) {
 }
 
 function atvykau2(clicked) {
-    firebase.database().ref().set({
-        id: 4,
-        krovinioStatusas: 'Atvykau į išsikrovimo vietą',
-        laikas4: d
+  
+    notesRef.push({
+        status: 'Atvykau į išsikrovimo vietą',
+        time: Date()
     });
     $(clicked).addClass('hidden');
     $("#4").removeClass('hidden');
@@ -59,10 +86,10 @@ function atvykau2(clicked) {
 
 
 function pradejauKrautis2(clicked) {
-    firebase.database().ref().set({
-        id: 5,
-        krovinioStatusas: 'Pradejau išsikrovimą',
-        laikas5: d
+ 
+    notesRef.push({
+        status: 'Pradejau išsikrovimą',
+        time: Date()
     });
     $(clicked).addClass('hidden');
     $("#5").removeClass('hidden');
@@ -70,10 +97,10 @@ function pradejauKrautis2(clicked) {
 }
 
 function isvykstu(clicked) {
-    firebase.database().ref().set({
-        id: 6,
-        krovinioStatusas: 'Išvykau iš išsikrovimo vietos',
-        laikas6: d
+ 
+    notesRef.push({
+        status: 'Išvykau iš išsikrovimo vietos',
+        time: Date()
     });
      $(clicked).addClass('hidden');
     $("#camera").removeClass('hidden');
@@ -81,8 +108,8 @@ function isvykstu(clicked) {
 
 
 
-firebaseRef.on('value', (snapshot) => {
-    //document.getElementById('chatas') = "<li>" + snapshot.val() + "</li>";
-    $("#chatas").append("<li>" + snapshot.val() + "</li>");
-    console.log(snapshot.val());
-});
+//firebaseRef.on('value', (snapshot) => {
+//    //document.getElementById('chatas') = "<li>" + snapshot.val() + "</li>";
+//    $("#chatas").append("<li>" + snapshot.val() + "</li>");
+//    console.log(snapshot.val());
+//});
