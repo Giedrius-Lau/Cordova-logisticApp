@@ -26,8 +26,8 @@ const dbRefList = dbRefObject.child('status');
 //const dbRefListTime = dbRefObject.child('time');
 
 //Sync object changes
-dbRefObject.on('value', snap => {
-    preObject.innerText = JSON.stringify(snap.val(), null, 3);
+dbRefObject.on('value', snapshot => {
+    preObject.innerText = JSON.stringify(snapshot.val(), null, 3);
 });
 
 
@@ -74,7 +74,11 @@ function isvykstuIsPasikrovimo(clicked) {
 }
 
 function atvykau2(clicked) {
-  
+
+
+     
+
+
     notesRef.push({
         status: 'Atvykau į išsikrovimo vietą',
         time: Date()
